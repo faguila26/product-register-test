@@ -1,0 +1,154 @@
+
+Instrucciones para correr el proyecto en otra máquina:
+
+PHP 8.0.30 (cli) (built: Sep  1 2023 14:15:38) ( ZTS Visual C++ 2019 x64 )
+
+1. Clonar el repositorio desde GitHub:
+
+   Primero, debes clonar el repositorio de GitHub a la máquina donde deseas ejecutar el proyecto.
+   
+   Abre una terminal en la máquina de destino y ejecuta el siguiente comando para clonar el repositorio (reemplaza <URL_DE_TU_REPOSITORIO> con la URL real de tu repositorio en GitHub):
+   
+   git clone <URL_DE_TU_REPOSITORIO>
+   cd <nombre_del_repositorio>
+
+   Esto descargará todo el código fuente en una carpeta con el nombre de tu repositorio.
+
+2. Instalar dependencias necesarias:
+
+   El proyecto parece estar utilizando PHP y PostgreSQL, por lo que debes asegurarte de tener ambas herramientas instaladas.
+
+   a) Instalar PHP:
+
+      Para instalar PHP en la máquina, usa el siguiente comando según tu sistema operativo.
+
+      - **Ubuntu/Debian**:
+
+      sudo apt update
+      sudo apt install php php-pgsql
+
+      - **Windows**:
+         Puedes descargar e instalar PHP desde PHP.net (https://windows.php.net/download).
+         Puedes instalar Xampp que tambien incluye PHP 
+
+      - **macOS**:
+         Usa Homebrew para instalar PHP:
+
+      brew install php
+
+   b) Instalar PostgreSQL:
+
+      El proyecto también se conecta a una base de datos PostgreSQL, así que asegúrate de tener PostgreSQL instalado.
+
+      - **Ubuntu/Debian**:
+
+      sudo apt update
+      sudo apt install postgresql postgresql-contrib
+
+      - **Windows**:
+         Descarga PostgreSQL desde la página oficial (https://www.postgresql.org/download/windows/).
+
+      - **macOS**:
+         Usa Homebrew para instalar PostgreSQL:
+
+      brew install postgresql
+
+3. Configurar la base de datos PostgreSQL utilizando DBeaver:
+    Si prefieres usar DBeaver para conectarte a PostgreSQL en lugar de la línea de comandos, sigue estos pasos:
+
+    1. Descargar e instalar DBeaver:
+    Si no tienes DBeaver, puedes descargarlo desde su página oficial: DBeaver Download.
+
+    2. Conectar a PostgreSQL desde DBeaver:
+        Abre DBeaver.
+        En la barra de herramientas, haz clic en el icono "New Database Connection" o selecciona Database > New Database Connection desde el menú.
+        Elige PostgreSQL de la lista de bases de datos.
+        Haz clic en Next.
+        3. Configurar la conexión:
+        Introduce los siguientes parámetros de conexión a PostgreSQL:
+
+        Host: localhost (o la IP del servidor de base de datos si no está en la misma máquina).
+        Port: 5432 (puerto predeterminado de PostgreSQL).
+        Database: El nombre de la base de datos que creaste (por ejemplo, postgres).
+        Username: postgres (o el usuario que configuraste).
+        Password: La contraseña de PostgreSQL.
+        Haz clic en Test Connection para verificar que la conexión funcione correctamente. Si todo está bien, haz clic en Finish.
+
+   3. Crear la base de datos y las tablas:
+
+      - Crea una base de datos con el nombre que desees (por ejemplo, postgres):
+
+      CREATE DATABASE postgres;
+
+      - Luego, dentro de esa base de datos, crea las tablas necesarias utilizando las instrucciones SQL que ya mencionamos (puedes incluir esas instrucciones en un archivo .sql y ejecutarlas con psql o copiarlas directamente en la consola de PostgreSQL).
+
+4. Configurar los parámetros de la base de datos en el archivo PHP:
+
+   En el archivo PHP, se utilizan credenciales de base de datos para conectarse a PostgreSQL. Debes asegurarte de que estos parámetros sean correctos en la nueva máquina. En tu código, debes cambiar la configuración de la base de datos:
+
+   $host = 'localhost';   // Asegúrate de que esta dirección sea correcta (si la base de datos está en otro servidor, cambia 'localhost' por la IP o dominio del servidor)
+   $port = '5432';        // El puerto predeterminado de PostgreSQL
+   $dbname = 'dbname';  // El nombre de la base de datos que creaste
+   $user = 'user';    // El nombre de usuario de PostgreSQL
+   $password = 'password';  // La contraseña de PostgreSQL
+
+   Asegúrate de que el usuario y la contraseña estén configurados correctamente en la máquina de destino.
+
+5. Configurar el servidor web (opcional):
+
+    El archivo PHP debe ser ejecutado por un servidor web para poder hacer las peticiones HTTP correctamente.
+
+    Si deseas usar un servidor web local, puedes instalar y configurar **XAMPP**. XAMPP incluye Apache y PHP, lo que lo convierte en una opción sencilla para ejecutar proyectos PHP de manera local.
+
+    Para usar XAMPP:
+
+    a. **Descargar e instalar XAMPP**:
+
+    - Dirígete a la página oficial de [XAMPP](https://www.apachefriends.org/es/index.html) y descarga la versión correspondiente a tu sistema operativo.
+    - Sigue las instrucciones para instalar XAMPP en tu máquina.
+
+    b. **Iniciar los servicios de Apache y MySQL**:
+
+    - Abre **XAMPP Control Panel**.
+    - Haz clic en **Start** en la columna de **Apache** para iniciar el servidor web Apache.
+    - Si es necesario, también puedes iniciar el servicio de **MySQL** si tu proyecto lo requiere.
+
+    c. **Mover el proyecto a la carpeta de XAMPP**:
+
+    - Una vez que XAMPP está instalado y ejecutándose, mueve o copia la carpeta de tu proyecto a la carpeta `htdocs` de la instalación de XAMPP.
+    
+    La carpeta `htdocs` generalmente se encuentra en:
+
+    - **Windows**: `C:\xampp\htdocs\`
+    - **macOS/Linux**: `/Applications/XAMPP/htdocs/`
+
+    Coloca tu proyecto dentro de esta carpeta para que sea accesible a través del servidor web.
+
+    d. **Acceder al proyecto desde el navegador**:
+
+    - Una vez que los servicios de Apache estén corriendo, abre un navegador y accede al proyecto usando la siguiente URL:
+    Esto levantará un servidor web en el puerto 8000, y podrás acceder al proyecto desde el navegador en http://localhost:8000.
+
+6. Prueba la conexión y las funcionalidades:
+
+   Una vez que hayas configurado la base de datos, PHP y el servidor web, abre tu navegador y prueba las funcionalidades de la aplicación:
+
+   - Accede a la URL correspondiente (por ejemplo, http://localhost:8000/register.php).
+   - Realiza solicitudes GET y POST según sea necesario para asegurarte de que las funciones del archivo PHP están funcionando correctamente.
+
+7. Verificación de errores y logs:
+
+   Si encuentras problemas, consulta los logs de errores en el archivo error_log que se genera en el servidor web. También puedes habilitar la visualización de errores PHP directamente en el navegador para mayor facilidad, si aún no lo has hecho:
+
+   ini_set('display_errors', 1);
+   error_reporting(E_ALL);
+
+Con estos pasos deberías poder ejecutar el proyecto en otra máquina, siempre y cuando tengas las herramientas necesarias configuradas y la base de datos esté correctamente establecida. Si tienes alguna duda o necesitas ajustes adicionales, no dudes en comentarlo.
+
+
+
+
+
+
+
+

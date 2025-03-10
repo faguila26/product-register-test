@@ -1,0 +1,127 @@
+/* Establecer el fondo y centrado del formulario */
+body {
+    background-color: #f7fafc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos del contenedor del formulario */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Estilo del título del formulario */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo de las filas del formulario */
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de los inputs */
+.input-container {
+    flex: 1;
+    min-width: 220px;
+}
+
+/* Estilo de las etiquetas de los inputs */
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+/* Estilos para los inputs */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 6px;
+    box-sizing: border-box;  /* Asegura que el padding no haga sobresalir el contenido */
+}
+
+/* Estilos para los selects */
+.select-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 6px;
+    box-sizing: border-box;
+}
+
+/* Estilos para los textareas */
+.textarea-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 6px;
+    resize: vertical;
+    min-height: 100px;
+    box-sizing: border-box;
+}
+
+/* Estilo para el contenedor de los checkboxes */
+.checkbox-container {
+    display: flex;
+    flex-direction: row; /* Esto asegura que los elementos estén en una fila */
+    flex-wrap: wrap; /* Permite que los elementos salten a la siguiente línea si no hay espacio */
+    gap: 10px;  /* Espacio entre los checkboxes */
+}
+
+/* Estilo para cada checkbox */
+.checkbox-wrapper {
+    display: flex;
+    flex-direction: row; /* Esto asegura que el checkbox y el texto estén en una fila */
+    align-items: center;  /* Alinea verticalmente el checkbox con el texto */
+    gap: 5px;  /* Espacio entre el checkbox y el texto */
+}
+
+/* Estilo para los checkboxes */
+.checkbox-wrapper input[type="checkbox"] {
+    margin-right: 5px;  /* Espacio entre el checkbox y el texto */
+}
+
+
+
+
+button {
+    background-color: #1aab8a;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    width: 200px; /* Ajusta el ancho según lo desees */
+    display: block;
+    margin: 0 auto; /* Esto centra el botón */
+}
+
+button:hover {
+    background-color: #169f7c;
+}
