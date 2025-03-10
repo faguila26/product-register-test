@@ -10,9 +10,9 @@ header('Content-Type: application/json');
 // Configuración de la base de datos
 $host = 'localhost';
 $port = '5432';
-$dbname = 'dbname'; //nombra tu dbname
-$user = 'user'; // cambia user
-$password = 'password'; //cambia password
+$dbname = 'dbname';
+$user = 'user';
+$password = 'password';
 $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
 
 if (!$conn) {
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'monedas':
             cargarMonedas($conn);
             break;
-        case 'materiales':  
+        case 'materiales':
             cargarMateriales($conn);  // Llamamos a la función para cargar los materiales
             break;
         default:
@@ -122,7 +122,6 @@ function cargarMonedas($conn) {
     $monedas = pg_fetch_all($result) ?: [];
     echo json_encode(["status" => "success", "data" => $monedas]);
 }
-
 // Función para obtener materiales
 function cargarMateriales($conn) {
     $query = "SELECT id, nombre FROM materiales ORDER BY nombre";  // Consulta para obtener los materiales

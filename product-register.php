@@ -13,12 +13,12 @@
             <div class="form-group">
                 <div class="input-container">
                     <label for="codigo">Código</label>
-                    <input type="text" id="codigo" name="codigo" value="PROD" required class="input-field">
+                    <input type="text" id="codigo" name="codigo" value="" required class="input-field">
                     <div id="codigo-error" style="color: red; display: none;"></div>
                 </div>
                 <div class="input-container">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" value="Set" required class="input-field">
+                    <input type="text" id="nombre" name="nombre" value="" required class="input-field">
                     <div id="nombre-error" style="color: red; display: none;"></div>
                 </div>
             </div>
@@ -26,14 +26,14 @@
                 <div class="input-container">
                     <label for="bodega">Bodega</label>
                     <select id="bodega" name="bodega" required class="select-field">
-                        <option value="">Seleccione una bodega</option>
+                        <option value=""></option>
                     </select>
                     <div id="bodega-error" style="display: none; color: red;">Error</div>
                 </div>
                 <div class="input-container">
                     <label for="sucursal">Sucursal</label>
                     <select id="sucursal" name="sucursal" required class="select-field">
-                        <option value="">Seleccione una sucursal</option>
+                        <option value=""></option>
                     </select>
                     <div id="sucursal-error" style="display: none; color: red;">Error</div>
                 </div>
@@ -43,13 +43,13 @@
                 <div class="input-container">
                     <label for="moneda">Moneda</label>
                     <select id="moneda" name="moneda" required class="select-field">
-                    <option value="">Seleccione una moneda</option>
+                    <option value=""></option>
                     </select>
                     <div id="moneda-error" style="display: none; color: red;">Error</div>
                 </div>
                 <div class="input-container">
                     <label for="precio">Precio</label>
-                    <input type="number" id="precio" name="precio" value="1500" required class="input-field">
+                    <input type="text" id="precio" name="precio" value="" required class="input-field">
                     <div id="precio-error" style="display: none; color: red;"></div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
             <br>
             <div class="form-group">
                 <label for="descripcion">Descripción</label>
-                <textarea id="descripcion" name="descripcion" rows="4" required class="textarea-field">Elegante set de comedor de madera natural, incluye mesa y sillas. Diseño clásico y duradero, ideal para cualquier estilo de decoración. Perfecto para cenas familiares y reuniones sociales.</textarea>
+                <textarea id="descripcion" name="descripcion" rows="4" required class="textarea-field"></textarea>
                 <div id="descripcion-error" style="display: none; color: red;"></div>
             </div>
             <div class="form-group">

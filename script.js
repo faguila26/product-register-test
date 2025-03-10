@@ -156,6 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const sucursal = sucursalSelect.value;
         const moneda = monedaSelect.value;
         const precio = precioInput.value.trim();
+        console.log("Código:", precio);
 
         let isValid = true;
 
@@ -197,12 +198,12 @@ document.addEventListener("DOMContentLoaded", function () {
             isValid = false;
         }
 
-        // Validación de precio: debe ser un número positivo con hasta dos decimales
-        const precioRegex = /^\d+(\.\d{1,2})?$/;
+        const precioRegex = /^(?!0\d)\d{1,7}(\.\d{1,2})?$/;
         if (!precioRegex.test(precio) || parseFloat(precio) <= 0) {
-            mostrarError(precioError, "El precio debe ser un número positivo con hasta dos decimales (por ejemplo, 19.99).");
+            mostrarError(precioError, "El precio debe ser un número positivo con hasta dos decimales (por ejemplo, 19.99 o 1500.35).");
             isValid = false;
         }
+
 
         // Validación de longitud para la descripción
         if (descripcion.length < 10 || descripcion.length > 1000) {
@@ -212,9 +213,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Si hay errores, detener el envío
         if (!isValid) return;
         
+        // Verificar que al menos 2 materiales estén seleccionados
         const materials = document.querySelectorAll('input[name="material[]"]:checked');
-        if (materials.length === 0) {
-            alert("Debe seleccionar al menos un material.");
+        if (materials.length < 2) {
+            alert("Debe seleccionar al menos 2 materiales.");
             return;
         }
 
@@ -244,6 +246,16 @@ document.addEventListener("DOMContentLoaded", function () {
             // Si la respuesta del servidor es exitosa
             if (data.status === 'success') {
                 alert('Producto registrado correctamente.');
+                // Limpiar todos los campos del formulario
+                    form.reset();
+
+                    // Limpiar los checkboxes manualmente (ya que form.reset() no los desmarca)
+                    materialCheckboxes.forEach(checkbox => checkbox.checked = false);
+
+                    // Opcional: Restablecer selectores a la primera opción
+                    bodegaSelect.selectedIndex = 0;
+                    sucursalSelect.selectedIndex = 0;
+                    monedaSelect.selectedIndex = 0;
             } else {
                 alert('Error al registrar el producto. Intente nuevamente.');
             }
